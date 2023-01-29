@@ -14,6 +14,7 @@ function App() {
   };
   const deleteTask = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
+    localStorage.setItem("tasks", JSON.stringify(todos));
   };
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(todos));
@@ -23,7 +24,14 @@ function App() {
       <h1>Just do it.</h1>
       <ToDoInput onSubmit={addToDo} />
       {todos.map((task) => {
-        return <Task key={task.id} name={task.name} deleteTask={deleteTask} />;
+        return (
+          <Task
+            key={task.id}
+            name={task.name}
+            id={task.id}
+            deleteTask={deleteTask}
+          />
+        );
       })}
     </div>
   );

@@ -8,7 +8,7 @@ const Task = ({ name, deleteTask, id }) => {
       <div className="actions">
         <FontAwesomeIcon className="check" icon={faCheck} />
         <FontAwesomeIcon
-          //   onClick={deleteTask(id)}
+          onClick={() => deleteTask(id)}
           className="trash"
           icon={faTrash}
         />
