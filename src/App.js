@@ -7,6 +7,7 @@ function App() {
   let [todos, setTodos] = useState([]);
   const addToDo = (todo) => {
     setTodos([...todos, todo]);
+    localStorage.setItem("tasks", JSON.stringify(todos));
   };
   return (
     <div className="App">
