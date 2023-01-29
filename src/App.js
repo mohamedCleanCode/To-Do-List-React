@@ -16,6 +16,21 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
     localStorage.setItem("tasks", JSON.stringify(todos));
   };
+  const isComplete = (id) => {
+    console.log(id);
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            complete: !todo.complete,
+          };
+        } else {
+          return todo;
+        }
+      })
+    );
+  };
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(todos));
   }, [todos]);
@@ -30,6 +45,8 @@ function App() {
             name={task.name}
             id={task.id}
             deleteTask={deleteTask}
+            complete={task.complete}
+            isComplete={isComplete}
           />
         );
       })}

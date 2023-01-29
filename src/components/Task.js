@@ -1,14 +1,20 @@
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Task = ({ name, deleteTask, id }) => {
+const Task = (props) => {
   return (
     <div className="task">
-      <p>{name}</p>
+      <p style={{ textDecoration: props.complete ? "line-through" : "" }}>
+        {props.name}
+      </p>
       <div className="actions">
-        <FontAwesomeIcon className="check" icon={faCheck} />
         <FontAwesomeIcon
-          onClick={() => deleteTask(id)}
+          onClick={() => props.isComplete(props.id)}
+          className="check"
+          icon={faCheck}
+        />
+        <FontAwesomeIcon
+          onClick={() => props.deleteTask(props.id)}
           className="trash"
           icon={faTrash}
         />
