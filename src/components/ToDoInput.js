@@ -17,7 +17,7 @@ const ToDoInput = (props) => {
   };
 
   useEffect(() => {
-    const stop = setInterval(() => {
+    setInterval(() => {
       setDate(new Date());
       setampm(date.getHours() >= 12 ? "pm" : "am");
     }, 1000);
