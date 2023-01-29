@@ -17,7 +17,6 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(todos));
   };
   const isComplete = (id) => {
-    console.log(id);
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {

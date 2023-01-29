@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import shortid from "shortid";
 
 const ToDoInput = (props) => {
-  let date = new Date();
-  let ampm = date.getHours() >= 12 ? "pm" : "am";
+  const [date, setDate] = useState(new Date());
+  const [ampm, setampm] = useState(date.getHours() >= 12 ? "pm" : "am");
   const [text, setText] = useState("");
 
   const handelSubmit = (e) => {
@@ -15,6 +15,13 @@ const ToDoInput = (props) => {
     });
     setText("");
   };
+
+  useEffect(() => {
+    const stop = setInterval(() => {
+      setDate(new Date());
+      setampm(date.getHours() >= 12 ? "pm" : "am");
+    }, 1000);
+  }, []);
 
   return (
     <div className="ToDoInput">
